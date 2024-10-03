@@ -43,3 +43,12 @@
 **Пример вызова:**
 ```python
 area(5)  # Вернет 78.53981633974483
+
+**История изменения проекта и их хеши**
+8bb950d (HEAD -> documentation, origin/documentation) files was modified
+b5b0fae (origin/develop, develop) L-04: Update docs for calculate.py
+d76db2a L-04: Add calculate.py
+51c40eb L-04: Doc updated for triangle
+d080c78 L-04: Triangle added
+d078c8d (origin/main, main) L-03: Docs added
+8ba9aeb L-03: Circle and square added
