@@ -29,5 +29,3 @@ if __name__ == "__main__":
 	
 	calc(fig, func, size)
 
-
-
