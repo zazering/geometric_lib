@@ -1,0 +1,47 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+    branches:
+      - master
+      - release
+      - develop
+      - feat/tests
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code check
+        uses: actions/checkout@v2
+      
+      - name: Output info
+        run: |
+          echo "Your name: [Nikulin Mark Kirillovich]"
+          echo "Group number: [M3110]"
+          echo "GitHub nickname: ${{ github.actor }}"
+          
+      - name: Download python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+          
+      - name: Update
+        run: python -m pip install --upgrade pip
+        
+      - name: Check content
+        run: ls -la
+        
+      - name: install dependencies
+        run: pip install -r requirements.txt
+        working-directory: geometric_lib
+        
+      - name: Run tests
+        run: pytest
+        
+      - name: Check code style
+        run: flake8 .
