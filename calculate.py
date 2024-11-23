@@ -18,37 +18,41 @@ figs = {
     }
 }
 
+
 def calc(fig, func, size):
     """Вычисляет значение для заданной фигуры и функции."""
     assert fig in figs, f"Figure '{fig}' is not available."
-    assert func in figs[fig], f"Function '{func}' is not available for figure '{fig}'."
+    assert func in figs[fig], (f"Function '{func}' is not available for "
+                               f"figure '{fig}'.")
 
-    result = figs[fig][func](*size)  # Вызываем нужную функцию напрямую
+    result = figs[fig][func](*size)
 
     return result  # Возвращаем само значение
+
 
 if __name__ == "__main__":
     func = ''
     fig = ''
     size = []
 
-    # Запрашиваем фигуру у пользователя
     while fig not in figs:
-        fig = input(f"Enter figure name, available are {list(figs.keys())}:\n")
+        fig = input(f"Enter figure name, "
+                    f"available are {list(figs.keys())}:\n")
 
-    # Запрашиваем функцию у пользователя
     while func not in figs[fig]:
-        func = input(f"Enter function name, available are {list(figs[fig].keys())}:\n")
+        func = input(f"Enter function name, "
+                     f"available are {list(figs[fig].keys())}:\n")
 
-    # Запрашиваем размеры в зависимости от фигуры и функции
-    while len(size) != 1:  # Предполагаем, что для круга и квадрата размер один, а для треугольника - три
+    while len(size) != 1:
         if fig == 'triangle':
-            size = list(map(int, input("Input three sides of the triangle separated by space:\n").split()))
+            size = list(map(int, input("Input three sides of the triangle "
+                                       "separated by space:\n").split()))
             if len(size) != 3:
                 print("Please enter exactly three sides for a triangle.")
                 size = []
         else:
-            size = list(map(int, input("Input figure size (1 for circle and square):\n").split()))
+            size = list(map(int, input("Input figure size (1 for circle and "
+                                       "square):\n").split()))
 
     result = calc(fig, func, size)
     print(f'The {func} of the {fig} is {result}.')
